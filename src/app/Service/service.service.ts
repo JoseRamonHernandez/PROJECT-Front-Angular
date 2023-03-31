@@ -16,10 +16,10 @@ export class ServiceService {
     return this.http.get<Persona[]>(this.URL+'listar')
   }
 
-  createPersona(persona:Persona)
-  {
-    return this.http.post<Persona>(this.URL, persona)
-  }
+   createPersona(persona:Persona)
+   {
+     return this.http.post<Persona>(this.URL, persona)
+   }
 
   getPersonaId(id:number)
   {
