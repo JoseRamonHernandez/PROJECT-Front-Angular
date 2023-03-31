@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Persona } from 'src/app/Modelo/persona';
+import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
   selector: 'app-edit',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit() {
+    this.Editar();
+  }
+
+  modelPersona: Persona = new Persona();
+
+  Editar()
+  {
+    let id = localStorage.getItem("id");
+    this.service.getPersonaId(+id)
+    .subscribe(data =>{
+      this.modelPersona = data;
+    })
+  }
+
+  Actualizar(persona: Persona)
+  {
+    this.service.editPersona(persona)
+    .subscribe(data =>{
+      alert("SE ACTUALIZO EL REGISTRO");
+      this.router.navigate(["listar"]);
+    })
   }
 
 }

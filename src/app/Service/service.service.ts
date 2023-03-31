@@ -21,15 +21,15 @@ export class ServiceService {
      return this.http.post<Persona>(this.URL, persona)
    }
 
-  getPersonaId(id:number)
-  {
-    return this.http.get<Persona>(this.URL+id)
-  }
+   getPersonaId(id:number)
+   {
+     return this.http.get<Persona>(this.URL+id)
+   }
 
-  editPersona(persona:Persona)
-  {
-    return this.http.put<Persona>(this.URL + persona.id, persona)
-  }
+   editPersona(persona:Persona)
+   {
+     return this.http.put<Persona>(this.URL + persona.id, persona)
+   }
 
   deletePersona(persona:Persona)
   {
